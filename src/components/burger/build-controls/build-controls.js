@@ -13,8 +13,15 @@ const controls = [
 const BuildControls = (props) => (
     <div className="BuildControls">
    
+    <p>Current Price : <strong> {props.price.toFixed(2)}</strong> </p>
+
     {controls.map(eachCtrl => (
-        <Building key={eachCtrl.label} label={eachCtrl.label}/>
+        <Building key={eachCtrl.label} 
+        label={eachCtrl.label}
+        //type={eachCtrl.type} insteadof doing this passing like below
+        added={()=>props.ingredientAdded(eachCtrl.type)}
+        removed ={()=>props.ingredientRemoved(eachCtrl.type)}
+        disabled={props.disabled[eachCtrl.type]}/>
     ))}
     </div>
 );
